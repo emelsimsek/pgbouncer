@@ -3,12 +3,13 @@ version: '3.8'
 services:
   pgbouncer:
     build:
-      dockerfile: Dockerfile
+      dockerfile: pgbouncer_dockerfile
       context: ./
     command: sleep infinity
     volumes:
       - .bash_history:/root/.bash_history
-      - ../..:/workspace:cached
+      #- ../..:/workspace:cached
+      - /${HOME}/.ssh:/root/.ssh
 
     network_mode: service:db
 
